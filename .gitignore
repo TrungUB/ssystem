@@ -1,8 +1,8 @@
-/.idea
-/.settings
-/target
-/.classpath
-/.project
-/ssystem.iml
+.idea/
+.settings/
+target/
+.classpath/
+.project/
+ssystem.iml
 # ignore the class binary files
 *.class
