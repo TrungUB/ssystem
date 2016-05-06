@@ -1,8 +1,8 @@
+.idea
 .settings
 target
 .project
 ssystem.iml
-.idea
 .classpath
 # ignore the class binary files
 *.class
