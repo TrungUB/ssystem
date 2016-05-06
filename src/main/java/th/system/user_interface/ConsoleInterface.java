@@ -13,8 +13,8 @@ public class ConsoleInterface {
     }
     
     private void displayOption() {
-        System.out.println("1. Option 1");
-        System.out.println("2. Option 2");
+        System.out.println("1. Student manage");
+        System.out.println("2. Subject register");
         System.out.println("3. Option 3");
         System.out.println("4. Option 4");
         System.out.println("5. Exit");

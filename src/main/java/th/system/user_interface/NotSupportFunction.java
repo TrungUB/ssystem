@@ -1,6 +1,6 @@
-package th.system.application;
+package th.system.user_interface;
 
-public class NotSupportApplication implements ApplicationExecutable {
+public class NotSupportFunction implements FunctionExecutable {
     
     @Override
     public void execute() {
