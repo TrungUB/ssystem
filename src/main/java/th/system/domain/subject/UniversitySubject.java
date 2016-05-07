@@ -1,4 +1,4 @@
-package th.system.domain;
+package th.system.domain.subject;
 
 public class UniversitySubject {
     private String subjectId;

@@ -1,16 +1,18 @@
-package th.system.domain.constant;
+package th.system.user_interface.constant;
 
 import java.util.Arrays;
 import java.util.List;
 
-public enum RegisterType {
-    SCHEDULED(2),
-    FREE(1),
+public enum SubjectRegisterOption {
+    REGISTER(1),
+    DISPLAY_SCORES(2),
+    DISPLAY_REGISTERED_SUBJECTS(3),
+    BACK(4),
     NOT_SUPPORT(0);
     
     private int inputOpt;
 
-    private RegisterType(int inputOpt) {
+    private SubjectRegisterOption(int inputOpt) {
         this.inputOpt = inputOpt;
     }
     
@@ -18,11 +20,11 @@ public enum RegisterType {
         return inputOpt;
     }
     
-    public static List<RegisterType> getOptList() {
+    public static List<SubjectRegisterOption> getOptList() {
         return Arrays.asList(values());
     }
 
-    public static RegisterType getOptByValue(int inputOpt) {
+    public static SubjectRegisterOption getOptByValue(int inputOpt) {
         return getOptList().stream().filter(e -> e.inputOpt == inputOpt).findFirst().orElse(NOT_SUPPORT);
     }
 }

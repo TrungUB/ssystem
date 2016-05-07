@@ -1,4 +1,4 @@
-package th.system.domain;
+package th.system.domain.subject;
 
 public class ScheduledSubject extends UniversitySubject {
     

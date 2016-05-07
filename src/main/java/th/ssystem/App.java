@@ -4,7 +4,7 @@ import th.system.user_interface.ConsoleInterface;
 
 public class App {
     public static void main(String[] args) {
-        new ConsoleInterface().run();
+        new ConsoleInterface().execute();
         System.out.println("Done");
     }
 }

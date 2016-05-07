@@ -8,24 +8,21 @@ import java.util.Map;
 import th.system.domain.ScoreEntry;
 
 public class ScoreEntries {
-    private List<ScoreEntry> scoreEntries;
     private Map<String, ScoreEntry> scoreEntriesMap;
- 
+    
     public ScoreEntries(List<ScoreEntry> scoreEntries) {
-        this.scoreEntries = new ArrayList<>(scoreEntries);
         scoreEntriesMap = new HashMap<>();
-        this.scoreEntries.forEach(e -> scoreEntriesMap.put(e.getSubjectId(), e));
+        if (scoreEntries != null) {
+            scoreEntries.forEach(e -> addEntry(e));
+        }
     }
     
     public List<ScoreEntry> getAll() {
-        return new ArrayList<>(scoreEntries);
+        return new ArrayList<>(scoreEntriesMap.values());
     }
-
+    
     public ScoreEntries addEntry(ScoreEntry entry) {
-        if(!scoreEntriesMap.containsKey(entry.getSubjectId())) {
-            scoreEntries.add(entry);
-        }
-        scoreEntriesMap.put(entry.getSubjectId(), entry);    
+        scoreEntriesMap.put(entry.getSubjectId(), entry);
         return this;
     }
 }

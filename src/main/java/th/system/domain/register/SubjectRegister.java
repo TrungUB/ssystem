@@ -11,6 +11,7 @@ public abstract class SubjectRegister {
     
     public SubjectRegister(Student student) {
         this.student = student;
+        this.scoreEntries = new ScoreEntries(null);
     }
     
     public String getStudentId() {
@@ -18,7 +19,7 @@ public abstract class SubjectRegister {
     }
     
     public void registerSubject(ScoreEntry entry) {
-        if(isStatisfied(entry)) {
+        if(!isStatisfied(entry)) {
             System.out.println("You can not register this subject.");
             return;
         }

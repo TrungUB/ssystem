@@ -1,5 +1,5 @@
 package th.system.user_interface;
 
-public interface FunctionExecutable {
+public interface ConsoleInterfaceExecutable {
     void execute();
 }

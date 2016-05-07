@@ -3,7 +3,7 @@ package th.system.user_interface.constant;
 import java.util.Arrays;
 import java.util.List;
 
-import th.system.user_interface.FunctionExecutable;
+import th.system.user_interface.ConsoleInterfaceExecutable;
 import th.system.user_interface.NotSupportFunction;
 import th.system.user_interface.NullFunction;
 import th.system.user_interface.StudentManagerFunction;
@@ -20,9 +20,9 @@ public enum GlobalFunctionOption {
     // @formatter:on
     
     private int inputOpt;
-    private FunctionExecutable command;
+    private ConsoleInterfaceExecutable command;
     
-    GlobalFunctionOption(int number, FunctionExecutable command) {
+    GlobalFunctionOption(int number, ConsoleInterfaceExecutable command) {
         this.inputOpt = number;
         this.command = command;
     }
@@ -39,7 +39,7 @@ public enum GlobalFunctionOption {
         return getGlobalFunctionOptionList().stream().filter(e -> e.inputOpt == number).findFirst().orElse(NOT_SUPPORT);
     }
     
-    public FunctionExecutable getCommand() {
+    public ConsoleInterfaceExecutable getCommand() {
         return command;
     }
 }

@@ -9,7 +9,7 @@ public enum StudentManagerOption {
     DELETE(3),
     EDIT(4),
     BACK(5),
-    NOT_SUPPORT(6);
+    NOT_SUPPORT(0);
     
     private int inputOpt;
 
@@ -28,4 +28,5 @@ public enum StudentManagerOption {
     public static StudentManagerOption getOptByValue(int inputOpt) {
         return getOptList().stream().filter(e -> e.inputOpt == inputOpt).findFirst().orElse(NOT_SUPPORT);
     }
+    
 }

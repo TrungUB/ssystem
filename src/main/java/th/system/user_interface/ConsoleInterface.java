@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import th.system.user_interface.constant.GlobalFunctionOption;
 
-public class ConsoleInterface {
+public class ConsoleInterface implements ConsoleInterfaceExecutable {
     
     private Scanner scanner;
     
@@ -30,7 +30,8 @@ public class ConsoleInterface {
         }
     }
     
-    public void run() {
+    @Override
+    public void execute() {
         while(true) {
             GlobalFunctionOption optionFromConsole = getOptionFromConsole();
             if(optionFromConsole == GlobalFunctionOption.EXIT) {

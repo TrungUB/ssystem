@@ -1,6 +1,6 @@
 package th.system.user_interface;
 
-public class NotSupportFunction implements FunctionExecutable {
+public class NotSupportFunction implements ConsoleInterfaceExecutable {
     
     @Override
     public void execute() {
