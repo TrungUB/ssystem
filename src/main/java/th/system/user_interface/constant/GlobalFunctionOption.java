@@ -3,18 +3,20 @@ package th.system.user_interface.constant;
 import java.util.Arrays;
 import java.util.List;
 
+import th.system.user_interface.CheckGraduateConditionFunction;
 import th.system.user_interface.ConsoleInterfaceExecutable;
 import th.system.user_interface.NotSupportFunction;
 import th.system.user_interface.NullFunction;
 import th.system.user_interface.StudentManagerFunction;
 import th.system.user_interface.SubjectManagerFunction;
+import th.system.user_interface.UpdateScoreFunction;
 
 public enum GlobalFunctionOption {
     // @formatter:off
     STUDENT_MANAGE          (1, new StudentManagerFunction()), 
     SUBJECT_REGISTER        (2, new SubjectManagerFunction()),
-    FILL_RESULT             (3, new NullFunction()), 
-    CHECK_GRADUATE_CONDITION(4, new NullFunction()),
+    FILL_RESULT             (3, new UpdateScoreFunction()), 
+    CHECK_GRADUATE_CONDITION(4, new CheckGraduateConditionFunction()),
     EXIT                    (5, new NullFunction()), 
     NOT_SUPPORT             (0, new NotSupportFunction());
     // @formatter:on

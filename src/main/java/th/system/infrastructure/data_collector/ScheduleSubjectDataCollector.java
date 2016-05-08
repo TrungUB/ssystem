@@ -9,23 +9,18 @@ public class ScheduleSubjectDataCollector extends SubjectDataCollector {
     
     @Override
     protected UniversitySubject getASubject() {
-        System.out.println("Please enter the subject ID: ");
-        String subjectId = getTrimmedString();
-        System.out.println("Please enter the subject name: ");
-        String subjectName = getTrimmedString();
-        System.out.println("Please enter the subject credit: ");
-        int credit = getCredit();
-        System.out.println("Please enter the subject semester: ");
-        String semester = getTrimmedString();
-        ScheduledSubject scheduledSubject = new ScheduledSubject(subjectId, subjectName, credit, semester);
-        return scheduledSubject;
+        return new ScheduledSubject(
+            getString("Please enter the subject ID: "),
+            getString("Please enter the subject name: "),
+            getCredit("Please enter the subject credit: "),
+            getString("Please enter the subject semester: "));
     }
     
     @Override
     protected List<? extends UniversitySubject> normalizeSubject(List<? extends UniversitySubject> subjects) {
         return subjects;
     }
-
+    
     @Override
     protected void displayMessage() {
         System.out.println("Please enter the scheduled subject data.");

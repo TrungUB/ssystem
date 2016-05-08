@@ -35,4 +35,8 @@ public class SubjectRegisterRepository {
     public ScoreEntries getAllNotScoredSubject(String studentId) {
         return subjectRegisters.getAllNotScoredSubject(studentId);
     }
+
+    public void updateScore(String studentId, String subjectId, float midtermScore, float finalScore) {
+        subjectRegisters.updateScore(studentId, subjectId, midtermScore, finalScore);
+    }
 }

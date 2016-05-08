@@ -8,6 +8,7 @@ import java.util.Map;
 import th.system.domain.subject.UniversitySubject;
 
 public class SubjectEntities {
+    
     private Map<String, UniversitySubject> subjectMap;
     
     public SubjectEntities(List<? extends UniversitySubject> subjects) {

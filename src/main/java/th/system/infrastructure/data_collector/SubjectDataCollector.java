@@ -31,7 +31,7 @@ public abstract class SubjectDataCollector {
     }
     
     protected abstract void displayMessage();
-
+    
     protected abstract List<? extends UniversitySubject> normalizeSubject(List<? extends UniversitySubject> subjects);
     
     protected abstract UniversitySubject getASubject();
@@ -46,11 +46,17 @@ public abstract class SubjectDataCollector {
         }
     }
     
+    protected String getString(String message) {
+        System.out.println(message);
+        return getTrimmedString();
+    }
+    
     protected String getTrimmedString() {
         return scanner.nextLine().trim();
     }
-
-    protected int getCredit() {
+    
+    protected int getCredit(String message) {
+        System.out.println(message);
         int credit;
         while (true) {
             try {
@@ -62,5 +68,5 @@ public abstract class SubjectDataCollector {
             }
         }
         return credit;
-    }    
+    }
 }

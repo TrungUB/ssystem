@@ -1,6 +1,7 @@
 package th.system.domain.subject;
 
 public class UniversitySubject {
+    
     private String subjectId;
     private String subjectName;
     private int credit;

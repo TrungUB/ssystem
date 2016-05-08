@@ -1,6 +1,7 @@
 package th.system.application;
 
 import th.system.domain.ScoreEntry;
+import th.system.domain.Student;
 import th.system.domain.constant.RegisterType;
 import th.system.repository.StudentRepository;
 import th.system.repository.SubjectRegisterRepository;
@@ -64,6 +65,35 @@ public class SubjectRegisterApplication {
                     e.getMidtermScore().get(),
                     e.getFinalScore().get()))
             .forEach(System.out::println);
+    }
+    
+    public boolean doesSubjectExist(String studentId, String subjectId) {
+        if (!doesStudentExist(studentId)) return false;
+        
+        return registerRepository.getAllNotScoredSubject(studentId).containsSubject(subjectId);
+    }
+    
+    public void updateScore(String studentId, String subjectId, float midtermScore, float finalScore) {
+        registerRepository.updateScore(studentId, subjectId, midtermScore, finalScore);
+    }
+    
+    public void displayAllStudentList() {
+        studentRepository.getStudentList().getAll().stream().map(Student::getId).forEach(System.out::println);
+    }
+    
+    public boolean isConsideredGraduate(String studentId) {
+        if (!doesStudentExist(studentId)) {
+            System.out.println(String.format("Student %s does not exist!", studentId));
+            return false;
+        }
+        
+        if(isVeryFirstTimeRegister(studentId)) {
+            System.out.println(String.format("Student %s have no registered subject!", studentId));
+            return true;
+        }
+        
+        return registerRepository.getAllScoredSubject(studentId).getAll().stream().filter(e -> !e.isPass()).count() == 0
+            && registerRepository.getAllNotScoredSubject(studentId).getAll().stream().count() == 0;
     }
     
 }

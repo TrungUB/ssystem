@@ -5,6 +5,7 @@ import java.util.List;
 
 import th.system.domain.fcc.SubjectEntities;
 import th.system.domain.subject.UniversitySubject;
+import th.system.infrastructure.data_collector.FreeSubjectDataCollector;
 import th.system.infrastructure.data_collector.ScheduleSubjectDataCollector;
 import th.system.infrastructure.data_collector.SubjectDataCollector;
 
@@ -14,7 +15,7 @@ public class SubjectInfrastructure {
     
     public SubjectInfrastructure() {
         dataCollectors = new ArrayList<>();
-//        dataCollectors.add(new FreeSubjectDataCollector());
+        dataCollectors.add(new FreeSubjectDataCollector());
         dataCollectors.add(new ScheduleSubjectDataCollector());
     }
 

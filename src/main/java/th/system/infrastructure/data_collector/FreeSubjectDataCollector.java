@@ -11,14 +11,10 @@ public class FreeSubjectDataCollector extends SubjectDataCollector {
     
     @Override
     protected UniversitySubject getASubject() {
-        System.out.println("Please enter the subject ID: ");
-        String subjectId = getTrimmedString();
-        System.out.println("Please enter the subject name: ");
-        String subjectName = getTrimmedString();
-        System.out.println("Please enter the subject credit: ");
-        int credit = getCredit();
-        UniversitySubject universitySubject = new UniversitySubject(subjectId, subjectName, credit);
-        return universitySubject;
+        return new UniversitySubject(
+            getString("Please enter the subject ID: "),
+            getString("Please enter the subject name: "),
+            getCredit("Please enter the subject credit: "));
     }
     
     @Override
@@ -33,12 +29,16 @@ public class FreeSubjectDataCollector extends SubjectDataCollector {
     }
     
     private SubjectEntities getThePredetermineSubjectsOf(UniversitySubject subject, SubjectEntities subjects) {
-        System.out.println(String.format("[Subject id]: %d, [Subject name]: %d", subject.getSubjectId(), subject.getSubjectName()));
+        System.out.println(String.format("[Subject id]: %s, [Subject name]: %s", subject.getSubjectId(), subject.getSubjectName()));
         List<UniversitySubject> predetermineList = new ArrayList<>();
         
         while (true) {
-            System.out.println("Enter the pre-determine subject id: ");
-            String id = scanner.nextLine();
+            String id = getString("Enter the pre-determine subject id (Press enter if there is no pre-determine subject): ");
+            
+            if(id.length() == 0) {
+                break;
+            }
+            
             if (!subjects.doesExist(id)) {
                 System.out.println(String.format("This subject (%s) does not exist. Do it again!", id));
             } else {
@@ -52,7 +52,7 @@ public class FreeSubjectDataCollector extends SubjectDataCollector {
         
         return new SubjectEntities(predetermineList);
     }
-
+    
     @Override
     protected void displayMessage() {
         System.out.println("Please enter the credit subject data.");

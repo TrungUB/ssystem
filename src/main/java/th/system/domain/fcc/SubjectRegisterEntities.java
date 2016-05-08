@@ -59,6 +59,13 @@ public class SubjectRegisterEntities {
         registerMap.get(studentId).getScoreEntries().addEntry(entry);
     }
     
+    public void updateScore(String studentId, String subjectId, float midtermScore, float finalScore) {
+        ScoreEntry subjectEntry = registerMap.get(studentId).getScoreEntries().findEntryById(subjectId);
+        if(subjectEntry != null) {
+            subjectEntry.updateScore(midtermScore, finalScore);
+        }
+    }
+    
     public boolean isEmpty() {
         return registerMap.isEmpty();
     }

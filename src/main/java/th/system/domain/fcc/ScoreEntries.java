@@ -25,4 +25,16 @@ public class ScoreEntries {
         scoreEntriesMap.put(entry.getSubjectId(), entry);
         return this;
     }
+
+    public boolean isEmpty() {
+        return scoreEntriesMap.isEmpty();
+    }
+
+    public boolean containsSubject(String subjectId) {
+        return scoreEntriesMap.containsKey(subjectId);
+    }
+    
+    public ScoreEntry findEntryById(String subjectId) {
+        return scoreEntriesMap.get(subjectId);
+    }
 }
