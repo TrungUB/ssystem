@@ -16,7 +16,7 @@ public class ConsoleInterface implements ConsoleInterfaceExecutable {
         System.out.println("1. Student manage");
         System.out.println("2. Subject register");
         System.out.println("3. Update scores");
-        System.out.println("4. Option 4");
+        System.out.println("4. Check the graduate condition");
         System.out.println("5. Exit");
         System.out.println("Which option do you want to choose?");
     }
