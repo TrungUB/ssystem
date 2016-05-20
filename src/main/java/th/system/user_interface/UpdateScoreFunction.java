@@ -1,22 +1,18 @@
 package th.system.user_interface;
 
-import java.util.Scanner;
-
 import th.system.application.SubjectRegisterApplication;
 
-public class UpdateScoreFunction implements ConsoleInterfaceExecutable {
+public class UpdateScoreFunction extends AbstractConsoleInterface {
     
-    private Scanner scanner;
     private SubjectRegisterApplication application;
     
     public UpdateScoreFunction() {
-        scanner = new Scanner(System.in);
         application = new SubjectRegisterApplication();
     }
     
     @Override
     public void execute() {
-        displayConsole();
+        displayOption();
         displayStudentList();
         String studentId = getString("Please enter the student id: ");
         if (!application.doesStudentExist(studentId)) {
@@ -59,13 +55,9 @@ public class UpdateScoreFunction implements ConsoleInterfaceExecutable {
         application.displayAllStudentList();
     }
     
-    private void displayConsole() {
+    @Override
+    protected void displayOption() {
         System.out.println("Update score function.");
-    }
-    
-    private String getString(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
     }
     
 }

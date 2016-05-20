@@ -1,18 +1,14 @@
 package th.system.user_interface;
 
-import java.util.Scanner;
-
 import th.system.application.SubjectRegisterApplication;
 import th.system.user_interface.constant.SubjectRegisterOption;
 
-public class SubjectManagerFunction implements ConsoleInterfaceExecutable {
+public class SubjectManagerFunction extends AbstractConsoleInterface {
     
-    private Scanner scanner;
     private SubjectRegisterApplication application;
     
     public SubjectManagerFunction() {
         application = new SubjectRegisterApplication();
-        scanner = new Scanner(System.in);
     }
     
     @Override
@@ -41,11 +37,6 @@ public class SubjectManagerFunction implements ConsoleInterfaceExecutable {
         }
     }
     
-    private String getString(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
-    }
-    
     private void checkSubjectDataExistProcess() {
         System.out.println("Subject manager function.");
         if (application.hasNoSubject()) {
@@ -55,7 +46,7 @@ public class SubjectManagerFunction implements ConsoleInterfaceExecutable {
     }
     
     private SubjectRegisterOption getOption() {
-        displayConsole();
+        displayOption();
         try {
             return SubjectRegisterOption.getOptByValue(Integer.parseInt(getString("Please enter the option!")));
         } catch (NumberFormatException ex) {
@@ -63,7 +54,8 @@ public class SubjectManagerFunction implements ConsoleInterfaceExecutable {
         }
     }
     
-    private void displayConsole() {
+    @Override
+    protected void displayOption() {
         System.out.println("Subject manager function");
         System.out.println("1. Register");
         System.out.println("2. Display scores");

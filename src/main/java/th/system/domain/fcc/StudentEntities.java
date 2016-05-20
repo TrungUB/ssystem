@@ -7,35 +7,47 @@ import java.util.Map;
 
 import th.system.domain.Student;
 
-public class StudentEntities {
+public class StudentEntities implements Entities<Student> {
+
     private Map<String, Student> studentMap;
     
     public StudentEntities(List<Student> studentList) {
         this.studentMap = new HashMap<>();
         if(studentList != null) {
-            studentList.forEach(e -> addStudent(e));
+            studentList.forEach(e -> add(e));
         }
     }
     
+    @Override
     public List<Student> getAll() {
         return new ArrayList<>(studentMap.values());
     }
     
-    public StudentEntities addStudent(Student student) {
+    @Override
+    public StudentEntities add(Student student) {
         studentMap.put(student.getId(), student);
         return this;
     }
     
-    public StudentEntities deleteStudent(String id) {
+    @Override
+    public StudentEntities delete(String id) {
         studentMap.remove(id);
         return this;
     }
     
-    public Student getStudentById(String id) {
+    @Override
+    public Student findById(String id) {
         return studentMap.get(id);
     }
 
-    public boolean doesStudentExist(String id) {
+    @Override
+    public boolean contains(String id) {
         return studentMap.containsKey(id);
     }
+
+    @Override
+    public boolean isEmpty() {
+        return studentMap.isEmpty();
+    }
+
 }

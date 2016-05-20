@@ -43,12 +43,16 @@ public class SubjectRegisterEntities {
     
     public ScoreEntries getAllScoredSubject(String studentId) {
         return new ScoreEntries(
-            getScoreEntries(studentId).getAll().stream().filter(e -> e.getMidtermScore().isPresent()).collect(Collectors.toList()));
+            getScoreEntryList(studentId).stream().filter(e -> e.getMidtermScore().isPresent()).collect(Collectors.toList()));
+    }
+    
+    private List<ScoreEntry> getScoreEntryList(String studentId) {
+        return getScoreEntries(studentId).getAll();
     }
     
     public ScoreEntries getAllNotScoredSubject(String studentId) {
         return new ScoreEntries(
-            getScoreEntries(studentId).getAll().stream().filter(e -> !e.getMidtermScore().isPresent()).collect(Collectors.toList()));
+            getScoreEntryList(studentId).stream().filter(e -> !e.getMidtermScore().isPresent()).collect(Collectors.toList()));
     }
     
     public void registerSubject(String studentId, ScoreEntry entry) {
@@ -56,12 +60,12 @@ public class SubjectRegisterEntities {
     }
     
     public void updateScore(String studentId, ScoreEntry entry) {
-        registerMap.get(studentId).getScoreEntries().addEntry(entry);
+        registerMap.get(studentId).addEntry(entry);
     }
     
     public void updateScore(String studentId, String subjectId, float midtermScore, float finalScore) {
-        ScoreEntry subjectEntry = registerMap.get(studentId).getScoreEntries().findEntryById(subjectId);
-        if(subjectEntry != null) {
+        ScoreEntry subjectEntry = registerMap.get(studentId).findEntryById(subjectId);
+        if (subjectEntry != null) {
             subjectEntry.updateScore(midtermScore, finalScore);
         }
     }

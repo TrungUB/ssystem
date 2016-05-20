@@ -2,17 +2,17 @@ package th.system.infrastructure.data_collector;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import th.system.domain.fcc.SubjectEntities;
 import th.system.domain.subject.UniversitySubject;
+import th.system.get_input.GetInputFromConsole;
 
 public abstract class SubjectDataCollector {
     
-    protected Scanner scanner;
+    protected GetInputFromConsole scanner;
     
     public SubjectDataCollector() {
-        scanner = new Scanner(System.in);
+        scanner = new GetInputFromConsole();
     }
     
     public SubjectEntities fetchSubjectData() {
@@ -47,12 +47,11 @@ public abstract class SubjectDataCollector {
     }
     
     protected String getString(String message) {
-        System.out.println(message);
-        return getTrimmedString();
+        return scanner.getString(message);
     }
     
     protected String getTrimmedString() {
-        return scanner.nextLine().trim();
+        return scanner.getTrimmedString();
     }
     
     protected int getCredit(String message) {

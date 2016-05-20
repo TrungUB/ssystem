@@ -39,10 +39,10 @@ public class FreeSubjectDataCollector extends SubjectDataCollector {
                 break;
             }
             
-            if (!subjects.doesExist(id)) {
+            if (!subjects.contains(id)) {
                 System.out.println(String.format("This subject (%s) does not exist. Do it again!", id));
             } else {
-                predetermineList.add(subjects.findSubjectById(id));
+                predetermineList.add(subjects.findById(id));
             }
             
             if (!isContinue()) {

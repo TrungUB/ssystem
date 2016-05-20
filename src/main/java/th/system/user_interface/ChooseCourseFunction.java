@@ -1,19 +1,15 @@
 package th.system.user_interface;
 
-import java.util.Scanner;
-
 import th.system.application.SubjectRegisterApplication;
 import th.system.domain.constant.RegisterType;
 
-public class ChooseCourseFunction implements ConsoleInterfaceExecutable {
+public class ChooseCourseFunction extends AbstractConsoleInterface {
     
-    private Scanner scanner;
     private String studentId;
     private SubjectRegisterApplication application;
     
     public ChooseCourseFunction(String studentId) {
         this.studentId = studentId;
-        scanner = new Scanner(System.in);
         application = new SubjectRegisterApplication();
     }
 
@@ -31,24 +27,20 @@ public class ChooseCourseFunction implements ConsoleInterfaceExecutable {
         }
     }
     
-    private void displayConsole() {
-        System.out.println("Which course do you want to get in?");
-        System.out.println("1. Free register");
-        System.out.println("2. Scheduled register");
-    }
-    
     private RegisterType getOption() {
-        displayConsole();
+        displayOption();
         try {
             return RegisterType.getOptByValue(Integer.parseInt(getString("Please enter your course: ")));
         } catch (NumberFormatException ex) {
             return RegisterType.NOT_SUPPORT;
         }
     }
-    
-    private String getString(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
+
+    @Override
+    protected void displayOption() {
+        System.out.println("Which course do you want to get in?");
+        System.out.println("1. Free register");
+        System.out.println("2. Scheduled register");
     }
     
 }

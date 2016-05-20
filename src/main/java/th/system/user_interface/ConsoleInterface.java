@@ -1,18 +1,11 @@
 package th.system.user_interface;
 
-import java.util.Scanner;
-
 import th.system.user_interface.constant.GlobalFunctionOption;
 
-public class ConsoleInterface implements ConsoleInterfaceExecutable {
-    
-    private Scanner scanner;
-    
-    public ConsoleInterface() {
-        scanner = new Scanner(System.in);
-    }
-    
-    private void displayOption() {
+public class ConsoleInterface extends AbstractConsoleInterface {
+
+    @Override
+    protected void displayOption() {
         System.out.println("1. Student manage");
         System.out.println("2. Subject register");
         System.out.println("3. Update scores");
@@ -24,7 +17,7 @@ public class ConsoleInterface implements ConsoleInterfaceExecutable {
     private GlobalFunctionOption getOptionFromConsole() {
         displayOption();
         try {
-            return GlobalFunctionOption.getOptionFromInputOpt(Integer.parseInt(scanner.nextLine()));
+            return GlobalFunctionOption.getOptionFromInputOpt(Integer.parseInt(scanner.getTrimmedString()));
         } catch (NumberFormatException ex) {
             return GlobalFunctionOption.NOT_SUPPORT;
         }

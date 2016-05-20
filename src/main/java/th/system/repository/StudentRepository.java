@@ -21,19 +21,19 @@ public class StudentRepository {
     }
     
     public StudentEntities addStudent() {
-        return studentList.addStudent(studentInfra.addStudent());
+        return studentList.add(studentInfra.addStudent());
     }
     
     public StudentEntities deleteStudent(String id) {
-        return studentList.deleteStudent(id);
+        return studentList.delete(id);
     }
     
     public Student getStudent(String id) {
-        return studentList.getStudentById(id);
+        return studentList.findById(id);
     }
 
     public boolean doesStudentExist(String id) {
-        return studentList.doesStudentExist(id);
+        return studentList.contains(id);
     }
     
 }

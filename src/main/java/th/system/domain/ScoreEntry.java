@@ -2,12 +2,16 @@ package th.system.domain;
 
 import java.util.Optional;
 
+import lombok.Getter;
 import th.system.domain.subject.UniversitySubject;
 
 public class ScoreEntry {
-    
+
+    @Getter
     private UniversitySubject subject;
+    @Getter
     private Optional<Float> midtermScore;
+    @Getter
     private Optional<Float> finalScore;
     
     public ScoreEntry(UniversitySubject subject, Float midtermScore, Float finalScore) {
@@ -15,19 +19,7 @@ public class ScoreEntry {
         this.midtermScore = Optional.ofNullable(midtermScore);
         this.finalScore = Optional.ofNullable(finalScore);
     }
-
-    public UniversitySubject getSubject() {
-        return subject;
-    }
-
-    public Optional<Float> getMidtermScore() {
-        return midtermScore;
-    }
     
-    public Optional<Float> getFinalScore() {
-        return finalScore;
-    }
-
     public void updateScore(float midtermScore, float finalScore) {
         this.midtermScore = Optional.of(midtermScore);
         this.finalScore = Optional.of(finalScore);

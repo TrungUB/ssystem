@@ -70,7 +70,7 @@ public class SubjectRegisterApplication {
     public boolean doesSubjectExist(String studentId, String subjectId) {
         if (!doesStudentExist(studentId)) return false;
         
-        return registerRepository.getAllNotScoredSubject(studentId).containsSubject(subjectId);
+        return registerRepository.getAllNotScoredSubject(studentId).contains(subjectId);
     }
     
     public void updateScore(String studentId, String subjectId, float midtermScore, float finalScore) {

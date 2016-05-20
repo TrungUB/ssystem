@@ -23,12 +23,20 @@ public abstract class SubjectRegister {
             System.out.println("You can not register this subject.");
             return;
         }
-        scoreEntries.addEntry(entry);
+        scoreEntries.add(entry);
     }
     
     protected abstract boolean isStatisfied(ScoreEntry entry);
 
     public ScoreEntries getScoreEntries() {
         return new ScoreEntries(scoreEntries.getAll());
+    }
+    
+    public void addEntry(ScoreEntry entry) {
+        scoreEntries.add(entry);
+    }
+    
+    public ScoreEntry findEntryById(String id) {
+        return scoreEntries.findById(id);
     }
 }

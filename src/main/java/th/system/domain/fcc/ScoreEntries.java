@@ -7,34 +7,45 @@ import java.util.Map;
 
 import th.system.domain.ScoreEntry;
 
-public class ScoreEntries {
+public class ScoreEntries implements Entities<ScoreEntry> {
     private Map<String, ScoreEntry> scoreEntriesMap;
     
     public ScoreEntries(List<ScoreEntry> scoreEntries) {
         scoreEntriesMap = new HashMap<>();
         if (scoreEntries != null) {
-            scoreEntries.forEach(e -> addEntry(e));
+            scoreEntries.forEach(e -> add(e));
         }
     }
     
+    @Override
     public List<ScoreEntry> getAll() {
         return new ArrayList<>(scoreEntriesMap.values());
     }
     
-    public ScoreEntries addEntry(ScoreEntry entry) {
+    @Override
+    public ScoreEntries add(ScoreEntry entry) {
         scoreEntriesMap.put(entry.getSubjectId(), entry);
         return this;
     }
 
+    @Override
     public boolean isEmpty() {
         return scoreEntriesMap.isEmpty();
     }
 
-    public boolean containsSubject(String subjectId) {
+    @Override
+    public boolean contains(String subjectId) {
         return scoreEntriesMap.containsKey(subjectId);
     }
     
-    public ScoreEntry findEntryById(String subjectId) {
+    @Override
+    public ScoreEntry findById(String subjectId) {
         return scoreEntriesMap.get(subjectId);
+    }
+
+    @Override
+    public Entities<ScoreEntry> delete(String id) {
+        scoreEntriesMap.remove(id);
+        return this;
     }
 }

@@ -1,17 +1,13 @@
 package th.system.user_interface;
 
-import java.util.Scanner;
-
 import th.system.application.StudentManagerApplication;
 import th.system.user_interface.constant.StudentManagerOption;
 
-public class StudentManagerFunction implements ConsoleInterfaceExecutable {
+public class StudentManagerFunction extends AbstractConsoleInterface {
     
     private StudentManagerApplication studentManagerApplication;
-    private Scanner scanner;
     
     public StudentManagerFunction() {
-        scanner = new Scanner(System.in);
         studentManagerApplication = new StudentManagerApplication();
     }
     
@@ -39,21 +35,17 @@ public class StudentManagerFunction implements ConsoleInterfaceExecutable {
         }
     }
     
-    private String getString(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
-    }
-    
     private StudentManagerOption getOption() {
-        displayConsole();
+        displayOption();
         try {
             return StudentManagerOption.getOptByValue(Integer.parseInt(getString("Please enter the option!")));
         } catch (NumberFormatException ex) {
             return StudentManagerOption.NOT_SUPPORT;
         }
     }
-    
-    private void displayConsole() {
+
+    @Override
+    protected void displayOption() {
         System.out.println("Student manager function");
         System.out.println("1. Display list students");
         System.out.println("2. Add student");

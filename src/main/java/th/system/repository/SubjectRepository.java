@@ -29,7 +29,7 @@ public class SubjectRepository {
     }
     
     public UniversitySubject getSubjectById(String id) {
-        return subjects.findSubjectById(id);
+        return subjects.findById(id);
     }
     
     public List<UniversitySubject> getAllFreeCourseSubject() {
