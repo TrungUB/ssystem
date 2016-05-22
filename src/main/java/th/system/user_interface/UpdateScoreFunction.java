@@ -47,7 +47,7 @@ public class UpdateScoreFunction extends AbstractConsoleInterface {
         }
     }
     
-    private void displaySubjectList(String studentId) {
+    protected void displaySubjectList(String studentId) {
         application.getRegisterSubjects(studentId);
     }
     

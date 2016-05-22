@@ -25,7 +25,6 @@ public class RegisterStudentFunction extends AbstractConsoleInterface {
         application.register(id, getString("Please enter the subject id"));  
     }
     
-
     @Override
     protected void displayOption() {
         // Do nothing
